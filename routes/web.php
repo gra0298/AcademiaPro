@@ -1,10 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\MiController;
-use App\Http\Controllers\OtroController;
-use App\Http\Controllers\ControlPrecios;
-use App\Http\Controllers\CursoController;#invocación
+use App\Http\Controllers\OperacionesController;
+
+
+use App\Http\Controllers\heladeria;
+
+
+use App\Http\Controllers\ControladorPrecios;
+
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\docentesController;
+use App\Http\Controllers\infoController;
+use App\Http\Controllers\infoDocentes;
+use App\Http\Controllers\personaController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,35 +34,54 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get(
-    'miprimeraruta', function (){
-        return 'Hola mundo';
-    });
-
-Route::get('minombre/{nombre}/{edad}',function ($nombre,$edad){
-    return 'Hola mi nombre es: '. $nombre. ' y mi edad es: '.$edad;
+Route::get('miprimeraRuta', function () {
+    return 'Bienvenido aprendices';
 });
 
-Route::get('otraprueba',function (){
-    return 'Hola esto es otra prueba';
-});
-
-Route::get('saludo/{nombre}',function ($nombre){
-    return 'Hola como estás: '.$nombre;
+Route::get('minombre/{nombre}/edad/{edad}',function($nombre,$edad){
+    return 'Hola mi nombre es: ' . $nombre . '<br> Tengo: ' . $edad . ' años';
 });
 
 
-#Heladeria
-Route::get('micontrolador',[MiController::class,'prueba']);
-Route::get('micontrolador',[MiController::class,'saludo']);
-Route::get('micontrolador',[MiController::class,'otraprueba']);
-//primero
-Route::get('OtroController/{opcion}',[OtroController::class,'opcion']);
-//segundo
-Route::get('precio/{precio}',[ControlPrecios::class,'descuento']);
-//tercero
-Route::get('nombre/{nombre}/precio/{precio}',[ControlPrecios::class,'getIva']);
+Route::get('micontrolador/{nombre}', [MiController::class,'saludo']);
+Route::get('operaciones/{nombres}',[OperacionesController::class,'saludos']);
 
-#clase 2
-Route::resource('cursos',CursoController::class);#aqui se llaman todos los metodos por eso no se utiliza []
+
+
+// A partir de aca es el taller
+
+
+Route::get('heladeria/{tipo}', [heladeria::class,'helado']);
+
+
+
+
+Route::get('precio/{precio}', [ControladorPrecios::class,'descuento']);
+
+Route::get('iva/nombre/{nombre}/valor/{valor}', [ControladorPrecios::class,'getIVA']);
+
+
+
+// Nuevo
+
+Route::resource('cursos',CursoController::class);
+
+Route::resource('personas',personaController::class);
+
+
+
+//enrutador
+
+//clase 3
+Route::get('nosotros',[InfoController::class,'info']);
+
+//nosotros:nombre de ruta
+//InfoController:controlador
+//info:metodo al cual accede
+//taller
+//Route::get('docentes',[infoDocentes::class,'docentes']);
+Route::resource('docentes',docentesController::class);#este no sirve
+//Route::get('docentes/create',[docentesController::class,'create']);
+//Route::get('docentes/show',[docentesController::class,'show']);
+
 

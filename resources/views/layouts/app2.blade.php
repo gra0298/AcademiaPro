@@ -1,13 +1,13 @@
 <html>
     <head>
-        <title>Academia - @yield('titulo')</title>
+        <title>personas - @yield('titulo')</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <a href="/cursos" class="navbar-brand">
-                <img src="/logo/logopro.png" width="30" height="30" alt="">
+            <a href="/personas" class="navbar-brand">
+                <img src="#" width="30" height="30" alt="">
             </a>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -15,20 +15,10 @@
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/cursos">Nuestros Cursos <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/personas">personas <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/docentes">Docentes <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/docentes/create">crear docente <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/cursos/create">crear curso <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/nosotros">sobre nosotros<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/personas/create">crear persona <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>

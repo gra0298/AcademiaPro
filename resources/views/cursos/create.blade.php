@@ -1,29 +1,43 @@
-{{--en blade heredamos con @extends--}}
+{{--En blade heredamos con @extends--}}
 @extends('layouts.app')
-@section('titulo','crear curso')
+
+@section('titulo','Crear curso')
+
 @section('contenido')
+        <br>
+        <h3 class="text-center">Creación de nuevo curso</h3>
+        <form action="/cursos" method = "POST" enctype="multipart/form-data">
 
-<h3 class="text-center">creación del nuevo curso</h3>
-<form action="/cursos" method="POST">
-    @csrf
-    <div class="form-group">
-        <label for="nombre">ingrese nombre del curso</label>
-        <input id="nombre" class="form-control" type="text" name="nombre">
-    </div>
-    <div class="form-group">
-        <label for="descrip">ingrese una descripción </label>
-        <input id="descrip" class="form-control" type="text" name="descripcion">
-    </div>
-    <button class="btn btn-dark" type="submit">Crear</button>
-</form>
+            @csrf {{-- csrf : Es una protección contra ataques malintencionados--}}
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $alerta )
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            <li>{{$alerta}}</li>
+                        </ul>
+                    </div>
+                @endforeach
+            @endif
+
+            <div class="form-group">
+                <label for="nombre">Ingrese nombre del curso</label>
+                <input id="nombre" class="form-control" type="text" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="descrip">Ingrese una descripción del curso</label>
+                <input id="descrip" class="form-control" type="text" name="descripcion">
+            </div>
+            <div class="form-group">
+                <label for="imagen">Cargue una imagen para el curso</label>
+                <br>
+                <input id="imagen"  type="file" name="imagen">
+            </div>
+            <button class="btn btn-dark" type="submit">Crear</button>
+        </form>
 @endsection
-
-
-
-
-
 {{--
-antes de heredar la plantilla
+Esto era antes de heredar la plantilla
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,23 +47,25 @@ antes de heredar la plantilla
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario para crear</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
 </head>
 <body>
     <div class="container">
         <br>
-        <h3 class="text-center">creación del nuevo curso</h3>
-        <form action="" method="POST">
+        <h3 class="text-center">Creación de nuevo curso</h3>
+        <form action="" method = "POST">
             <div class="form-group">
-                <label for="nombre">ingrese nombre del curso</label>
+                <label for="nombre">Ingrese nombre del curso</label>
                 <input id="nombre" class="form-control" type="text" name="nombre">
             </div>
             <div class="form-group">
-                <label for="descrip">ingrese una descripción </label>
+                <label for="descrip">Ingrese una descripción del curso</label>
                 <input id="descrip" class="form-control" type="text" name="descripcion">
             </div>
             <button class="btn btn-dark" type="submit">Crear</button>
         </form>
     </div>
-
 </body>
-</html>--}}
+</html>
+
+ --}}

@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
 
-#para que use la clase controller
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
 class MiController extends Controller{
     public function prueba(){
-        return ' estoy en un controlador';
+        return 'estoy en un controlador';
     }
 
+    public function comer(){
+        return 'No estoy comiendo';
+    }
     public function saludo($nombre){
-        return 'hola como estas '.$nombre;
+        return 'mi nombre es: ' . $nombre;
     }
 
-    public function otraprueba(){
-        return 'esta es otra prueba';
-    }
 }
